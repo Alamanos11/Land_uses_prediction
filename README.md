@@ -12,4 +12,5 @@ There is a more detailed pdf (supporting info) with step-by-step guidance and sc
 The Python script and the data of the model are also provided.
 ###
 Reference:
+###
 Alamanos, A. (2023). A Cellular Automata Markov (CAM) model for future land use change prediction using GIS and Python. DOI: 10.13140/RG.2.2.18133.40169. Available at: https://github.com/Alamanos11/Land_uses_prediction/tree/main#a-cellular-automata-markov-cam-model-for-land-use-change-prediction-using-gis-and-python
