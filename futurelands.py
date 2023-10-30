@@ -349,3 +349,47 @@ plt.ylabel("Land Use Area (Number of Pixels)")
 # Show the plot
 plt.show()
 
+
+####################  Plot the areas as stacked bars ###########################
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create a DataFrame from your data  (replace with the predicted areas)
+data = {
+    'Year': [2011, 2016, 2021, 2026, 2031, 2036, 2041, 2046, 2051],
+    'Water': [58.67, 58.60, 58.73, 58.62, 58.72, 58.74, 58.77, 58.81, 58.75],
+    'Urban': [79.89, 81.33, 82.66, 84.29, 85.83, 87.39, 88.90, 90.55, 90.55],
+    'Barren Land': [0.39, 0.40, 1.15, 1.71, 1.65, 1.59, 1.55, 1.53, 1.58],
+    'Forest': [80.07, 79.52, 79.20, 78.86, 78.20, 77.54, 76.86, 76.16, 76.08],
+    'Crops': [478.85, 478.01, 476.13, 474.38, 473.46, 472.60, 471.79, 470.83, 470.91]
+}
+
+df = pd.DataFrame(data)
+
+# Create the stacked bar plot
+plt.figure(figsize=(10, 6))
+
+# Define colors for the land use classes
+colors = ['blue', 'gray', 'orange', 'red', 'lightgreen']
+
+# Initialize the bottom values for the bars
+bottom = [0] * len(df['Year'])
+
+# Plot stacked bars for each land use class
+for i, col in enumerate(df.columns[1:]):
+    plt.bar(df['Year'], df[col], label=col, color=colors[i], bottom=bottom)
+    bottom = [bottom[j] + df[col][j] for j in range(len(df['Year']))]
+
+# Add labels, title, legend, and grid
+plt.xlabel('Year')
+plt.ylabel('Areas (km2)')
+plt.title('Land Uses Over Time')
+plt.legend(loc='upper left')
+plt.grid(True)
+
+# Set the x-axis ticks
+plt.xticks(df['Year'])
+
+# Show the plot
+plt.show()
